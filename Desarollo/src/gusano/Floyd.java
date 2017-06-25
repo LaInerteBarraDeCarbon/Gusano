@@ -20,6 +20,13 @@ public class Floyd {
 	 *            MatrizAdyacencia de adyacencia de un grafo. <br>
 	 */
 	public Floyd(final int[][] matrizAdyacencia) {
+		for (int i = 0; i < matrizAdyacencia.length; i++) {
+			for (int j = 0; j < matrizAdyacencia.length; j++) {
+				if (matrizAdyacencia[i][j] == 0) {
+					matrizAdyacencia[i][j] = Integer.MAX_VALUE;
+				}
+			}
+		}
 		this.tamaño = matrizAdyacencia.length;
 		this.matrizPonderacion = matrizAdyacencia;
 		for (int k = 0; k < this.tamaño; k++) {
@@ -29,6 +36,7 @@ public class Floyd {
 							&& Math.min(matrizAdyacencia[i][j],
 									matrizAdyacencia[i][k] + matrizAdyacencia[k][j]) != matrizAdyacencia[i][j]) {
 						matrizPonderacion[i][j] = matrizAdyacencia[i][k] + matrizAdyacencia[k][j];
+						matrizPonderacion[j][i] = matrizAdyacencia[i][k] + matrizAdyacencia[k][j];
 					}
 				}
 			}
