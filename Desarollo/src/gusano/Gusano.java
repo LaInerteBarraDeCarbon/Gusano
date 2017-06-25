@@ -38,6 +38,14 @@ public class Gusano extends EjercicioOIA {
 	 */
 	int maquinaOriginal;
 
+	/**
+	 * Crea el grafo del recorrido del virus de gusano. <br>
+	 * 
+	 * @param entrada
+	 *            Archivo con los datos de entrada. <br>
+	 * @param salida
+	 *            Archivo con el resultado final. <br>
+	 */
 	public Gusano(final File entrada, final File salida) {
 		super(entrada, salida);
 		try {
@@ -107,6 +115,11 @@ public class Gusano extends EjercicioOIA {
 			sc.close();
 			this.cantidadNodos = nodos.size();
 			this.matrizAdyacencia = new int[this.cantidadNodos][this.cantidadNodos];
+			for (int i = 0; i < this.cantidadNodos; i++) {
+				for (int j = 0; j < this.cantidadNodos; j++) {
+					this.matrizAdyacencia[i][j] = Integer.MAX_VALUE;
+				}
+			}
 			sc = new Scanner(archivo);
 			sc.nextInt();
 			for (int i = 0; i < cantidadAristas; i++) {
